@@ -100,6 +100,36 @@ Please note, the color scheme is used to define the background and text color fo
 
 Remember, these default values are subject to change based on updates to the library. Always refer to the source code or official documentation for the most accurate information.
 
+## Position Options
+
+The library provides a number of options for positioning toast notifications on the screen - `toasts.positionOptions.[variable]`. The positioning options are particularly useful for ensuring the toasts appear exactly where you want them to on different screen sizes.
+
+Here are the available position options:
+
+- `TOP_RIGHT`: Positions the toasts at the top-right corner of the screen.
+- `TOP_LEFT`: Positions the toasts at the top-left corner of the screen.
+- `TOP_MIDDLE`: Positions the toasts at the top-center of the screen.
+- `BOTTOM_RIGHT`: Positions the toasts at the bottom-right corner of the screen.
+- `BOTTOM_LEFT`: Positions the toasts at the bottom-left corner of the screen.
+- `BOTTOM_MIDDLE`: Positions the toasts at the bottom-center of the screen.
+
+To set the position of the toasts, you can use the `position` and `smPosition` properties in your configuration. `position` sets the position of the toasts for larger screens (screen width > 640px), while `smPosition` sets the position of the toasts for smaller screens (screen width < 640px).
+
+Here's how you can set these properties in your configuration:
+
+```js
+const toastConfig = {
+	// ...
+	position: toasts.positionOptions.TOP_RIGHT, // For larger screens
+	smPosition: toasts.positionOptions.BOTTOM_MIDDLE // For smaller screens
+	// ...
+};
+```
+
+This configuration will position the toasts at the top-right corner of the screen for larger screens, and at the bottom-center of the screen for smaller screens.
+
+You can use any combination of the position options based on your design preferences and requirements.
+
 ## Toast Methods
 
 The `toasts` controller provides several methods for displaying different types of toast notifications. Each method returns a `toastId` that can be used to manually remove the toast.
