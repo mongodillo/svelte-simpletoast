@@ -2,6 +2,8 @@
 
 A lightweight, customizable toast notification library for Svelte applications.
 
+Demo: [https://mongodillo.github.io/svelte-simpletoast/](https://mongodillo.github.io/svelte-simpletoast/)
+
 ## Installation
 
 Use the package manager [npm](https://www.npmjs.com/) to install svelte-simpletoast:
