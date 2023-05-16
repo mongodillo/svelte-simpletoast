@@ -18,18 +18,40 @@
 		*/
 	};
 
-	function allToasts() {
-		toasts.error('ERROR Toast', 'ERROR MESSAGE HERE', 10000);
-		toasts.success('Success Title', 'Success message');
-		toasts.processing('Data Downloading', 'Processing message');
-		toasts.neutral('NONE', 'Neutral', 500, true);
-		toasts.info('Info sending...', 'Info', 7500);
-		toasts.warning('WARNING', 'Warning Message!', 1000, true);
+	let processingIds = [];
 
+	function showAllToasts() {
+		toasts.error('Error Title', 'Error message', 10000);
+		toasts.success('Success Title', 'Success message - Default close time');
+		processingIds.push(toasts.processing('Data Downloading', 'Processing message'));
+		toasts.neutral('Neutral Title', 'Neutral message', 4000, true);
+		toasts.info('Info Title', 'Info message', 7500);
+		toasts.warning('Warning Title', 'Warning message', 6000);
+	}
 
+	function closeProcessingToasts() {
+		processingIds.forEach((id) => toasts.removeToast(id));
 	}
 </script>
 
-<button id="trigger-toast-button" on:click|preventDefault={allToasts}>Add All Toasts</button>
-
+<div class="container">
+	<button on:click={showAllToasts}>Show Toasts</button>
+	<button on:click={closeProcessingToasts}>Clear Processing Toasts</button>
+</div>
 <ToastContainer {toastConfig} />
+
+<style>
+	.container {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+	.container button {
+		height: 5rem;
+		font-weight: bolder;
+	}
+</style>
