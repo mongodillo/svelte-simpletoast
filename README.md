@@ -134,24 +134,26 @@ You can use any combination of the position options based on your design prefere
 
 The `toasts` controller provides several methods for displaying different types of toast notifications. Each method returns a `toastId` that can be used to manually remove the toast.
 
+Note: duration (ms) and autoClose (boolean) are optional parameters.
+
 ```js
 // Success toast
-toast.success(title, message, duration, autoClose);
+toast.success(title, message, duration?, autoClose?);
 
 // Error toast
-toast.error(title, message, duration, autoClose);
+toast.error(title, message, duration?, autoClose?);
 
 // Info toast
-toast.info(title, message, duration, autoClose);
+toast.info(title, message, duration?, autoClose?);
 
 // Warning toast
-toast.warning(title, message, duration, autoClose);
+toast.warning(title, message, duration?, autoClose?);
 
 // Processing toast
-toast.processing(title, message, duration, autoClose);
+toast.processing(title, message, duration?, autoClose?);
 
 // Neutral toast
-toast.neutral(title, message, duration, autoClose);
+toast.neutral(title, message, duration?, autoClose?);
 
 // Remove a toast
 toasts.removeToast(id);
