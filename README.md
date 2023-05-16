@@ -28,7 +28,7 @@ Import the toast container and place it in your root layout/page
 <script>
   import { ToastContainer } from 'svelte-simpletoast'
 
-  // You may override various options here
+  //[ OPTIONAL ] You may override various options here 
   const toastConfig = {
         duration: 5000, //if you want to override the default duration
 		autoClose: true // if you want to override the default "autoClose" boolean
@@ -51,16 +51,25 @@ Import the toast container and place it in your root layout/page
 <ToastContainer {toastConfig} />
 ```
 
-Use anywhere in your app - just import the toast controller.
+Use anywhere in your app by importing {toasts} from the package.
 
 `MyComponent.svelte`:
 
 ```html
 <script>
-  import { toasts } from 'svelte-simpletoast'
+	import { toasts } from 'svelte-simpletoast';
+
+	function showAllToasts() {
+		toasts.error('ERROR Toast', 'ERROR MESSAGE HERE', 10000);
+		toasts.success('Success Title', 'Success message');
+		toasts.processing('Data Downloading', 'Processing message');
+		toasts.neutral('NONE', 'Neutral', 500, true);
+		toasts.info('Info sending...', 'Info', 7500);
+		toasts.warning('WARNING', 'Warning Message!', 1000, true);
+	}
 </script>
 
-<button on:click={() => toast.success('Success Title','Hello world!')}>SHOW TOAST</button>
+<button on:click="{showAllToasts}">SHOW TOASTS</button>
 ```
 
 ## Toast Methods

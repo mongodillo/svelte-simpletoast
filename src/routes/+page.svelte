@@ -19,21 +19,14 @@
 	};
 
 	function allToasts() {
-		const errorId = toasts.error('ERROR Toast', 'ERROR MESSAGE HERE', 10000);
+		toasts.error('ERROR Toast', 'ERROR MESSAGE HERE', 10000);
 		toasts.success('Success Title', 'Success message');
 		toasts.processing('Data Downloading', 'Processing message');
-		toasts.neutral('NONE', 'Neutral', 0, false);
+		toasts.neutral('NONE', 'Neutral', 500, true);
 		toasts.info('Info sending...', 'Info', 7500);
-		toasts.warning(
-			'WARNING',
-			'Warning AHWAT DWADW WADWATWDWADWATWADWADAWDWAD WADWADWDWADWADWADWADWADWADWA',
-			0,
-			false
-		);
+		toasts.warning('WARNING', 'Warning Message!', 1000, true);
 
-		setTimeout(() => {
-			toasts.removeToast(errorId);
-		}, 2500);
+
 	}
 </script>
 
