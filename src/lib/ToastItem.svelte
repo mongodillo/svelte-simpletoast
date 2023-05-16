@@ -176,7 +176,7 @@
 		margin-bottom: 0.5rem;
 		word-break: break-word;
 	}
-	
+
 	.toast-message {
 		margin-left: 0.1rem;
 	}

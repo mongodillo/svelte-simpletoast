@@ -24,7 +24,12 @@
 		toasts.processing('Data Downloading', 'Processing message');
 		toasts.neutral('NONE', 'Neutral', 0, false);
 		toasts.info('Info sending...', 'Info', 7500);
-		toasts.warning('WARNING', 'Warning AHWAT DWADW WADWATWDWADWATWADWADAWDWAD WADWADWDWADWADWADWADWADWADWA', 0, false);
+		toasts.warning(
+			'WARNING',
+			'Warning AHWAT DWADW WADWATWDWADWATWADWADAWDWAD WADWADWDWADWADWADWADWADWADWA',
+			0,
+			false
+		);
 
 		setTimeout(() => {
 			toasts.removeToast(errorId);

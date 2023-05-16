@@ -1,59 +1,135 @@
-# create-svelte
+# svelte-simpletoast
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+> Simple toast notifications for Svelte
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+A simple and effective toast notification library for Svelte apps.
 
-## Creating a project
+## Usage
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install the package:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+$ npm i svelte-simpletoast
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+The following are exported:
 
-## Building
+- `ToastContainer` as the toast container;
+- `toasts` as the toast controller.
 
-To build your library:
+### Svelte
 
-```bash
-npm run package
+Import the toast container and place it in your root layout/page
+
+`+layout.svelte`:
+
+<!-- prettier-ignore -->
+```html
+<script>
+  import { ToastContainer } from 'svelte-simpletoast'
+
+  // You may override various options here
+  const toastConfig = {
+        duration: 5000, //if you want to override the default duration
+		autoClose: true // if you want to override the default "autoClose" boolean
+		position: toasts.positionOptions.TOP_RIGHT, //override default for positioning of Toasts (>640px)
+		smPosition: toasts.positionOptions.BOTTOM_MIDDLE // override default for positioning of Toasts (<640px screen size) - Recommended BOTTOM
+		maxToasts: 4, //limits the number of toasts so avoid clogging up the screen.
+		// Add your own color scheme if you do not want to use the default colours.
+		colorScheme: {
+			neutral: { color: '', bg: '' },
+			error: { color: '#123fff', bg: '#000000' },
+			success: { color: 'green', bg: 'red' },
+			info: { color: '', bg: '' },
+			warning: { color: '', bg: '' }
+		}
+		
+  }
+</script>
+
+...
+<ToastContainer {toastConfig} />
 ```
 
-To create a production version of your showcase app:
+Use anywhere in your app - just import the toast controller.
 
-```bash
-npm run build
+`MyComponent.svelte`:
+
+```html
+<script>
+  import { toasts } from 'svelte-simpletoast'
+</script>
+
+<button on:click={() => toast.success('Success Title','Hello world!')}>SHOW TOAST</button>
 ```
 
-You can preview the production build with `npm run preview`.
+## Toast Methods
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```js
+//Each of the "send toast" functions returns the toastId just in case you want to remove the toast manually via removeToast(id)
+// Sends a Success Toast
+toast.success(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose
+);
 
-## Publishing
+// Sends an Error Toast
+toast.Error(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose
+);
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+// Sends an Info Toast
+toast.Info(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose
+);
 
-To publish your library to [npm](https://www.npmjs.com):
+// Sends a Warning Toast
+toast.Warning(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose
+);
 
-```bash
-npm publish
+// Sends a Processing Toast
+toast.processing(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose // Default of False for Processing as you would be expected to close upon completion of whatever function you are running.
+);
+
+// Sends a Neutral Toast
+toast.neutral(
+	/** @type {string} */ title,
+	/** @type {string} */ message,
+	/** @type {number} */ duration,
+	/** @type {boolean} */ autoClose
+);
+
+/**
+ * Removes a Toast
+ * @function
+ * @param {number} id - id of toast to be removed
+ */
+const removeToast = (id) =>
+	update((/** @type {ToastArray} */ toasts) => toasts.filter((t) => t.id !== id));
 ```
-"# svelte-simpletoast" 
+
+## Development
+
+Packaging is through [SvelteKit](https://kit.svelte.dev/docs/packaging). Standard Github
+[contribution workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
+applies.
+
+## License
+
+MIT

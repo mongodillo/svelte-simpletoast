@@ -4,7 +4,7 @@
 	"author": "Marc Gregory (mongodillo@gmail.com)",
 	"version": "0.0.1",
 	"license": "MIT",
-	"repository": "",
+	"repository": "https://github.com/mongodillo/svelte-simpletoast",
 	"homepage": "",
 	"keywords": [
 		"svelte",
