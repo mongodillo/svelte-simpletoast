@@ -2,7 +2,7 @@
 	"name": "svelte-simpletoast",
 	"description": "Simple toast notifications for Svelte",
 	"author": "Marc Gregory (mongodillo@gmail.com)",
-	"version": "0.1.4",
+	"version": "0.2.3",
 	"license": "MIT",
 	"repository": "https://github.com/mongodillo/svelte-simpletoast",
 	"homepage": "https://mongodillo.github.io/svelte-simpletoast/",
@@ -14,6 +14,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
+		"vitebuild": "vite -c vite.js.config.js build",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
@@ -48,14 +49,20 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./dist-js": {
+			"import": "./dist-js/index.es.js",
+			"require": "./dist-js/index.umd.cjs"
 		}
 	},
 	"files": [
 		"dist",
+		"dist-js",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
 	"svelte": "./dist/index.js",
+	"jsdelivr": "./dist-js/index.umd.js",
 	"types": "./dist/index.d.ts",
 	"type": "module"
 }

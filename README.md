@@ -71,6 +71,33 @@ The `toasts` controller can be used anywhere in your application to display toas
 <button on:click="{showAllToasts}">Show Toasts</button>
 ```
 
+### Vanilla JS
+
+You can import the `ToastContainer` and `toasts` controller from the `svelte-simpletoast/dist-js`
+
+```js
+import { ToastContainer, toasts } from 'svelte-simpletoast/dist-js';
+const toastContainer = new ToastContainer({
+	target: document.body,
+	props: {
+		toastConfig: {
+			duration: 5000, // Duration (in milliseconds) for which a toast is displayed
+			autoClose: true, // If true, the toast will automatically close after the duration
+			position: toasts.positionOptions.TOP_RIGHT, // Positioning of toasts for screens larger than 640px
+			smPosition: toasts.positionOptions.BOTTOM_RIGHT, // Positioning of toasts for screens smaller than 640px
+			maxToasts: 7, // Maximum number of toasts that can be displayed at a time
+			colorScheme: {
+				neutral: { color: '#111827', bg: '#f3f4f6' },
+				error: { color: '#dc2626', bg: '#fed7d7' },
+				success: { color: '#059669', bg: '#c6f6d5' },
+				info: { color: '#065d9d', bg: '#bfdbfe' },
+				warning: { color: '#d97706', bg: '#fef3c7' }
+			}
+		}
+	}
+});
+```
+
 ## Default Configuration
 
 The library comes with a set of default configurations for toast notifications. Here's what the default configuration looks like:
