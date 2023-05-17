@@ -108,6 +108,8 @@ toasts.success('SUCCESS TITLE', 'MESSAGE');
 
 	<script src="https://cdn.jsdelivr.net/npm/svelte-simpletoast@latest"></script>
 	...
+</head>
+<body>
 	<script>
 		const toastContainer = new ToastContainer({
 			target: document.body,
@@ -131,7 +133,7 @@ toasts.success('SUCCESS TITLE', 'MESSAGE');
 
 		toasts.success('SUCCESS TITLE', 'MESSAGE');
 	</script>
-</head>
+</body>
 ```
 
 ## Default Configuration
