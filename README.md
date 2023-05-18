@@ -106,7 +106,7 @@ toasts.success('SUCCESS TITLE', 'MESSAGE');
 <head>
 	...
 
-	<script src="https://cdn.jsdelivr.net/npm/svelte-simpletoast@latest"></script>
+	<script src="https://cdn.jsdelivr.net/npm/svelte-simpletoast"></script>
 	...
 </head>
 <body>
