@@ -94,7 +94,7 @@
 		{/if}
 		<div class="toast-content">
 			<div class="toast-title-row">
-				<h1>{@html title}</h1>
+				<h6>{@html title}</h6>
 
 				<span>{toastTime}</span>
 			</div>
@@ -171,7 +171,7 @@
 	}
 
 	.toast-content p {
-		font-size: 1rem;
+		font-size: inherit;
 		margin-top: 0rem;
 		margin-bottom: 0.5rem;
 		word-break: break-word;
@@ -188,9 +188,9 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	.toast-title-row h1 {
-		font-size: 1.2rem;
-		font-weight: bolder;
+	.toast-title-row h6 {
+		font-size: inherit;
+		font-weight: bold;
 		text-transform: capitalize;
 		margin-top: 0;
 		margin-bottom: 0;
@@ -211,7 +211,7 @@
 		vertical-align: middle;
 		cursor: pointer;
 		padding: 0.25rem 0.5rem;
-		font-size: 1.25rem;
+		font-size: inherit;
 		border: none;
 		background-color: transparent;
 		color: inherit;

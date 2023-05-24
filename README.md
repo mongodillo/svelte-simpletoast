@@ -231,3 +231,9 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 ## License
 
 `svelte-simpletoast` is [MIT Licensed](https://chat.openai.com/LICENSE)
+
+## Changelog
+
+### 0.3.1
+
+- Changed font-size to inherit. (previously was 1rem for body and 1.2rem for Title.)
