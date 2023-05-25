@@ -36,6 +36,37 @@
 		if (toastPosition === 'top-middle') return { y: -300 };
 	};
 
+	/** Function to capitalize the first letter of a string
+	 * @param {string} string
+	 */
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+	/**
+	 * Sets the color scheme for the toast messages based on the provided configuration.
+	 *
+	 * @param {HTMLElement} node - The HTML element to apply the color scheme to.
+	 */
+	const setColorScheme = (node) => {
+		// Update the color scheme for the toast messages
+		const defaultColorScheme = {
+			error: { color: '#dc2626', bg: '#fed7d7' },
+			success: { color: '#059669', bg: '#c6f6d5' },
+			info: { color: '#065d9d', bg: '#bfdbfe' },
+			warning: { color: '#d97706', bg: '#fef3c7' },
+			neutral: { color: '#111827', bg: '#f3f4f6' }
+		};
+		// Merge the user-provided color scheme with the default one
+		const colorScheme = { ...defaultColorScheme, ...toastConfig.colorScheme };
+
+		let toastElement = node;
+		for (const [key, value] of Object.entries(colorScheme)) {
+			toastElement.style.setProperty(`--toast${capitalizeFirstLetter(key)}-color`, value.color);
+			toastElement.style.setProperty(`--toast${capitalizeFirstLetter(key)}-bg`, value.bg);
+		}
+	};
+
 	onMount(() => {
 		// Initialize the toasts if toastConfig is populated
 		toasts.init(toastConfig);
@@ -60,33 +91,6 @@
 		// Ensure the position is set correctly when the component first loads
 		handleResize();
 
-		// Update the color scheme for the toast messages
-
-		const defaultColorScheme = {
-			error: { color: '#dc2626', bg: '#fed7d7' },
-			success: { color: '#059669', bg: '#c6f6d5' },
-			info: { color: '#065d9d', bg: '#bfdbfe' },
-			warning: { color: '#d97706', bg: '#fef3c7' },
-			neutral: { color: '#111827', bg: '#f3f4f6' }
-		};
-
-		// Merge the user-provided color scheme with the default one
-		const colorScheme = { ...defaultColorScheme, ...toastConfig.colorScheme };
-
-		let toastElement = document.querySelector('.toast-container');
-		if (toastElement instanceof HTMLElement) {
-			for (const [key, value] of Object.entries(colorScheme)) {
-				toastElement.style.setProperty(`--toast${capitalizeFirstLetter(key)}-color`, value.color);
-				toastElement.style.setProperty(`--toast${capitalizeFirstLetter(key)}-bg`, value.bg);
-			}
-		}
-
-		/** Function to capitalize the first letter of a string
-		 * @param {string} string
-		 */
-		function capitalizeFirstLetter(string) {
-			return string.charAt(0).toUpperCase() + string.slice(1);
-		}
 		return () => {
 			// cleanup function to be run when component is destroyed
 			window.removeEventListener('resize', handleResize);
@@ -94,7 +98,7 @@
 	});
 </script>
 
-<ul class="toast-container {toastPosition}">
+<ul class="toast-container {toastPosition}" use:setColorScheme>
 	{#each $toasts as toast (toast.id)}
 		<li out:fade={{ duration: 200 }} in:fly={flyDirection()} animate:flip={{ duration: 200 }}>
 			<ToastItem {toast} {position} />

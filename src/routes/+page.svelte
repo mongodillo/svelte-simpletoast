@@ -5,7 +5,7 @@
 	let toastConfig = {
 		duration: 5000,
 		autoClose: true,
-		position: toasts.positionOptions.TOP_RIGHT,
+		position: toasts.positionOptions.BOTTOM_RIGHT,
 		smPosition: toasts.positionOptions.BOTTOM_MIDDLE,
 		maxToasts: 4,
 		colorScheme: {

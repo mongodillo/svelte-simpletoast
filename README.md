@@ -234,6 +234,10 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 
 ## Changelog
 
+### 0.3.2
+
+- Moved ToastContainer colour scheme set into a use:action function instead of onMount
+
 ### 0.3.1
 
 - Changed font-size to inherit. (previously was 1rem for body and 1.2rem for Title.)
