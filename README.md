@@ -20,13 +20,15 @@ To use `svelte-simpletoast`, you'll need to import and utilize both the `ToastCo
 
 ### Svelte
 
-Place the `ToastContainer` in your root layout/page and optionally override various options for customization:
+Place the `ToastContainer` in your root layout/page and optionally override various options for customization.
+
+In the event you are using the optional `toastConfig` with the `position/smPosition` options, please import `toasts` as well as the options below are stored as values in the `toasts.positionOptions` object
 
 `+layout.svelte`:
 
 ```html
 <script>
-	import { ToastContainer } from 'svelte-simpletoast';
+	import { ToastContainer, toasts } from 'svelte-simpletoast';
 
 	// Optional configurations
 	const toastConfig = {
@@ -224,6 +226,26 @@ toast.neutral(title, message, duration?, autoClose?);
 toasts.removeToast(id);
 ```
 
+## Font Sizes
+
+Font sizes are set to `inherit`. As such, you may tweak the font size of the toasts by wrapping the ToastContainer in a parent element with the stated font size.
+
+The Toast title uses `h6` and toast text uses `p` tags.
+
+### Svelte
+
+For example, in Svelte
+
+```html
+<div class="text-sm">
+	<ToastContainer {toastConfig} />
+</div>
+```
+
+### other JS/Vanilla JS/CDN
+
+You may have separate `<div>` element with the necessary class for text size, and have the target point to that specific element instead of `document.body`
+
 ## Development
 
 The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). Contributions are welcomed following the standard Github [contribution workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
@@ -234,6 +256,11 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 
 ## Changelog
 
+### 0.3.3
+
+- Updated Readme to clarify toasts import when using optional config.
+- Updated Readme to clarify setting of font sizes as this package uses `inherit` for font size
+- Removed out:fade from toasts so that there is no lag.
 ### 0.3.2
 
 - Moved ToastContainer colour scheme set into a use:action function instead of onMount

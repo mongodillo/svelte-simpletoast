@@ -100,7 +100,7 @@
 
 <ul class="toast-container {toastPosition}" use:setColorScheme>
 	{#each $toasts as toast (toast.id)}
-		<li out:fade={{ duration: 200 }} in:fly={flyDirection()} animate:flip={{ duration: 200 }}>
+		<li in:fly={flyDirection()} animate:flip={{ duration: 200 }}>
 			<ToastItem {toast} {position} />
 		</li>
 	{/each}
