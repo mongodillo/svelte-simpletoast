@@ -37,8 +37,8 @@
 		/**
 		 * Begin progress when the component is mounted.
 		 */
-		onMount(async () => {
-			await progress.set(0);
+		onMount(() => {
+			progress.set(0);
 		});
 	}
 

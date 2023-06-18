@@ -256,11 +256,18 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 
 ## Changelog
 
+### 0.3.4
+
+- Updated types for toasts so that `autoClose` and `duration` are optional as intended
+- Updated packages
+
+
 ### 0.3.3
 
 - Updated Readme to clarify toasts import when using optional config.
 - Updated Readme to clarify setting of font sizes as this package uses `inherit` for font size
 - Removed out:fade from toasts so that there is no lag.
+
 ### 0.3.2
 
 - Moved ToastContainer colour scheme set into a use:action function instead of onMount

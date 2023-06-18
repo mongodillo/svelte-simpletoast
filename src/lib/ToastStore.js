@@ -104,82 +104,81 @@ const createToast = () => {
 		return id - 1;
 	};
 
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
 	const success = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) =>
-		addToast(
-			title,
-			message,
-			statusOptions.SUCCESS,
-			duration ?? toastConfig.duration,
-			autoClose ?? toastConfig.autoClose
-		);
+		title,
+		message,
+		duration = toastConfig.duration,
+		autoClose = toastConfig.autoClose
+	) => {
+		addToast(title, message, statusOptions.SUCCESS, duration, autoClose);
+	};
 
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
 	const error = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) =>
-		addToast(
-			title,
-			message,
-			statusOptions.ERROR,
-			duration ?? toastConfig.duration,
-			autoClose ?? toastConfig.autoClose
-		);
+		title,
+		message,
+		duration = toastConfig.duration,
+		autoClose = toastConfig.autoClose
+	) => addToast(title, message, statusOptions.ERROR, duration, autoClose);
 
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
 	const warning = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) =>
-		addToast(
-			title,
-			message,
-			statusOptions.WARNING,
-			duration ?? toastConfig.duration,
-			autoClose ?? toastConfig.autoClose
-		);
+		title,
+		message,
+		duration = toastConfig.duration,
+		autoClose = toastConfig.autoClose
+	) => addToast(title, message, statusOptions.WARNING, duration, autoClose);
 
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
 	const info = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) =>
-		addToast(
-			title,
-			message,
-			statusOptions.INFO,
-			duration ?? toastConfig.duration,
-			autoClose ?? toastConfig.autoClose
-		);
+		title,
+		message,
+		duration = toastConfig.duration,
+		autoClose = toastConfig.autoClose
+	) => addToast(title, message, statusOptions.INFO, duration, autoClose);
 
-	const processing = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) => addToast(title, message, statusOptions.PROCESSING, duration ?? 0, autoClose ?? false);
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
+	const processing = (title, message, duration = 0, autoClose = false) =>
+		addToast(title, message, statusOptions.PROCESSING, duration, autoClose);
 
+	/**
+	 * @param {string} title
+	 * @param {string} message
+	 * @param {number=} duration
+	 * @param {boolean=} autoClose
+	 */
 	const neutral = (
-		/** @type {string} */ title,
-		/** @type {string} */ message,
-		/** @type {number} */ duration,
-		/** @type {boolean} */ autoClose
-	) =>
-		addToast(
-			title,
-			message,
-			statusOptions.NONE,
-			duration ?? toastConfig.duration,
-			autoClose ?? toastConfig.autoClose
-		);
+		title,
+		message,
+		duration = toastConfig.duration,
+		autoClose = toastConfig.autoClose
+	) => addToast(title, message, statusOptions.NONE, duration, autoClose);
 
 	/**
 	 * Removes a Toast
