@@ -1,9 +1,11 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { vitePreprocess } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [
 		svelte({
+			preprocess: vitePreprocess(),
 			configFile: false,
 			compilerOptions: {
 				dev: false,
@@ -15,9 +17,9 @@ export default defineConfig({
 	build: {
 		outDir: './dist-js',
 		lib: {
-			entry: './src/lib/index.js',
+			entry: './src/lib/index.ts',
 			name: 'window',
-			fileName: (format) => `index.${format}.js`
+			fileName: (format: string) => `index.${format}.js`
 		},
 		rollupOptions: {
 			output: {

@@ -1,29 +1,42 @@
-<script>
+<script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { onMount } from 'svelte';
 	import { toasts } from './ToastStore.js';
 	import ToastItem from './ToastItem.svelte';
 
-	export let toastConfig = {};
+	export let toastConfig = {
+		duration: 5000,
+		autoClose: true,
+		position: toasts.positionOptions.BOTTOM_RIGHT,
+		smPosition: toasts.positionOptions.BOTTOM_MIDDLE,
+		maxToasts: 7,
+		colorScheme: {
+			error: { color: '#dc2626', bg: '#fed7d7' },
+			success: { color: '#059669', bg: '#c6f6d5' },
+			info: { color: '#065d9d', bg: '#bfdbfe' },
+			warning: { color: '#d97706', bg: '#fef3c7' },
+			neutral: { color: '#111827', bg: '#f3f4f6' }
+		}
+	};
 
 	/**
 	 * Position of the toast messages for larger screens (screen width > 640px).
 	 * @type {string}
 	 */
-	let position = toasts.positionOptions.TOP_RIGHT; //default for larger screens. > 640px
+	let position: string = toasts.positionOptions.TOP_RIGHT; //default for larger screens. > 640px
 
 	/**
 	 * Position of the toast messages for smaller screens (screen width < 640px).
 	 * @type {string}
 	 */
-	let smPosition = toasts.positionOptions.BOTTOM_RIGHT; // default for smaller screens <640px
+	let smPosition: string = toasts.positionOptions.BOTTOM_RIGHT; // default for smaller screens <640px
 
 	/**
 	 * Position of the toast messages based on screen size.
 	 * @type {string}
 	 */
-	let toastPosition;
+	let toastPosition: string;
 
 	/**
 	 * Determines the direction of the fly animation based on the position of the toast.
@@ -39,7 +52,7 @@
 	/** Function to capitalize the first letter of a string
 	 * @param {string} string
 	 */
-	function capitalizeFirstLetter(string) {
+	function capitalizeFirstLetter(string: string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
@@ -48,7 +61,7 @@
 	 *
 	 * @param {HTMLElement} node - The HTML element to apply the color scheme to.
 	 */
-	const setColorScheme = (node) => {
+	const setColorScheme = (node: HTMLElement) => {
 		// Update the color scheme for the toast messages
 		const defaultColorScheme = {
 			error: { color: '#dc2626', bg: '#fed7d7' },
@@ -58,7 +71,10 @@
 			neutral: { color: '#111827', bg: '#f3f4f6' }
 		};
 		// Merge the user-provided color scheme with the default one
-		const colorScheme = { ...defaultColorScheme, ...toastConfig.colorScheme };
+		const colorScheme: { [key: string]: { color: string; bg: string } } = {
+			...defaultColorScheme,
+			...toastConfig.colorScheme
+		};
 
 		let toastElement = node;
 		for (const [key, value] of Object.entries(colorScheme)) {
@@ -69,7 +85,12 @@
 
 	onMount(() => {
 		// Initialize the toasts if toastConfig is populated
-		toasts.init(toastConfig);
+		toasts.init({
+			duration: toastConfig.duration,
+			autoClose: toastConfig.autoClose,
+			status: 'none',
+			maxToasts: toastConfig.maxToasts
+		});
 
 		// Update the toast positions if they were provided in the configuration
 		if (toastConfig.position) position = toastConfig.position;
