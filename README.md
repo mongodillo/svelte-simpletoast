@@ -252,15 +252,20 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 
 ## License
 
-`svelte-simpletoast` is [MIT Licensed](https://chat.openai.com/LICENSE)
+`svelte-simpletoast` is [MIT Licensed](https://opensource.org/license/mit/)
 
 ## Changelog
+
+### 0.4.0
+ BREAKING CHANGE:
+ - Updated to Svelte4
+ - Implemented Typescript
+ 
 
 ### 0.3.4
 
 - Updated types for toasts so that `autoClose` and `duration` are optional as intended
 - Updated packages
-
 
 ### 0.3.3
 

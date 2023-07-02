@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { ToastContainer, toasts } from '../lib/index.js';
 
 	let isToastContainerVisible = true;
 	let toastConfig = {
-		duration: 5000,
+		duration: 2000,
 		autoClose: true,
 		position: toasts.positionOptions.BOTTOM_RIGHT,
 		smPosition: toasts.positionOptions.BOTTOM_MIDDLE,
@@ -17,13 +17,14 @@
 		}
 	};
 
-	function showToast(type, title, message, duration, autoClose) {
-		toasts[type](title, message, duration, autoClose);
-	}
-
 	function initToastConfig() {
 		$toasts.forEach((toast) => toasts.removeToast(toast.id));
-		toasts.init(toastConfig);
+		toasts.init({
+			duration: toastConfig.duration,
+			autoClose: toastConfig.autoClose,
+			status: 'none',
+			maxToasts: toastConfig.maxToasts
+		});
 
 		isToastContainerVisible = false;
 		isToastContainerVisible = true;
@@ -75,22 +76,18 @@
 		<button on:click={initToastConfig}>Load New Config (Affects new toasts only)</button>
 		<h2>Toast Types</h2>
 		<div class="toast-buttons">
-			<button on:click={() => showToast('success', 'Success', 'This is a success toast.')}
+			<button on:click={() => toasts.success('Success', 'This is a success toast.')}
 				>Success Toast</button
 			>
-			<button on:click={() => showToast('error', 'Error', 'This is an error toast.')}
-				>Error Toast</button
-			>
-			<button on:click={() => showToast('info', 'Info', 'This is an info toast.')}
-				>Info Toast</button
-			>
-			<button on:click={() => showToast('warning', 'Warning', 'This is a warning toast.')}
+			<button on:click={() => toasts.error('Error', 'This is an error toast.')}>Error Toast</button>
+			<button on:click={() => toasts.info('Info', 'This is an info toast.')}>Info Toast</button>
+			<button on:click={() => toasts.warning('Warning', 'This is a warning toast.')}
 				>Warning Toast</button
 			>
-			<button on:click={() => showToast('processing', 'Processing', 'This is a processing toast.')}
+			<button on:click={() => toasts.processing('Processing', 'This is a processing toast.')}
 				>Processing Toast</button
 			>
-			<button on:click={() => showToast('neutral', 'Neutral', 'This is a neutral toast.')}
+			<button on:click={() => toasts.neutral('Neutral', 'This is a neutral toast.')}
 				>Neutral Toast</button
 			>
 		</div>
