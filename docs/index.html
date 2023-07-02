@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="./_app/immutable/assets/2.648397d3.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.1baa9f81.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.469e60c9.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.69076eec.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.3f6dea3c.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.670cb012.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ba0b5a10.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.2f8101b2.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.7e4f85ac.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div>  <div class="container svelte-11670ov"><div class="config-section svelte-11670ov"><h2 data-svelte-h="svelte-82jk71">Toast Configuration</h2> <div class="config-field svelte-11670ov"><label for="duration" data-svelte-h="svelte-7yrmi6">Max Toasts:</label> <input type="number" id="maxtoasts" value="4"></div> <div class="config-field svelte-11670ov"><label for="duration" data-svelte-h="svelte-b6cxrh">Duration (ms):</label> <input type="number" id="duration" value="2000"></div> <div class="config-field svelte-11670ov"><label for="autoClose" data-svelte-h="svelte-1x0rggu">Auto Close:</label> <input type="checkbox" id="autoClose" checked></div> <div class="config-field svelte-11670ov"><label for="position" data-svelte-h="svelte-1lj37ng">Position:</label> <select id="position"><option value="top-right">Top Right</option><option value="top-left">Top Left</option><option value="top-middle">Top Middle</option><option value="bottom-right">Bottom Right</option><option value="bottom-left">Bottom Left</option><option value="bottom-middle">Bottom Middle</option></select></div> <div class="config-field svelte-11670ov"><label for="smPosition" data-svelte-h="svelte-1wyrn0z">Small Screen Position:</label> <select id="smPosition"><option value="top-right">Top Right</option><option value="top-left">Top Left</option><option value="top-middle">Top Middle</option><option value="bottom-right">Bottom Right</option><option value="bottom-left">Bottom Left</option><option value="bottom-middle">Bottom Middle</option></select></div></div> <div class="toasts-section svelte-11670ov"><button class="svelte-11670ov" data-svelte-h="svelte-khm8ga">Load New Config (Affects new toasts only)</button> <h2 data-svelte-h="svelte-zn4hh4">Toast Types</h2> <div class="toast-buttons svelte-11670ov"><button class="svelte-11670ov" data-svelte-h="svelte-1netg5">Success Toast</button> <button class="svelte-11670ov" data-svelte-h="svelte-7hvzs0">Error Toast</button> <button class="svelte-11670ov" data-svelte-h="svelte-qrpry6">Info Toast</button> <button class="svelte-11670ov" data-svelte-h="svelte-1yldxbl">Warning Toast</button> <button class="svelte-11670ov" data-svelte-h="svelte-pa5jgj">Processing Toast</button> <button class="svelte-11670ov" data-svelte-h="svelte-hva2d1">Neutral Toast</button></div></div></div> <ul class="toast-container undefined svelte-12tkr57"> </ul> 
+			
+			<script>
+				{
+					__sveltekit_soy0hj = {
+						assets: "/svelte-simpletoast",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.1baa9f81.js"),
+						import("./_app/immutable/entry/app.670cb012.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
