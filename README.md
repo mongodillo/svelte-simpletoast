@@ -257,10 +257,11 @@ The package is bundled with [SvelteKit](https://kit.svelte.dev/docs/packaging). 
 ## Changelog
 
 ### 0.4.0
- BREAKING CHANGE:
- - Updated to Svelte4
- - Implemented Typescript
- 
+
+BREAKING CHANGE:
+
+- Updated to Svelte4
+- Implemented Typescript
 
 ### 0.3.4
 

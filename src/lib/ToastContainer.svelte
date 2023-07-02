@@ -4,8 +4,9 @@
 	import { onMount } from 'svelte';
 	import { toasts } from './ToastStore.js';
 	import ToastItem from './ToastItem.svelte';
+	import type { ToastConfigObj } from './ToastTypes.js';
 
-	export let toastConfig = {
+	export let toastConfig: ToastConfigObj = {
 		duration: 5000,
 		autoClose: true,
 		position: toasts.positionOptions.BOTTOM_RIGHT,
@@ -86,10 +87,10 @@
 	onMount(() => {
 		// Initialize the toasts if toastConfig is populated
 		toasts.init({
-			duration: toastConfig.duration,
-			autoClose: toastConfig.autoClose,
+			duration: toastConfig.duration || 5000,
+			autoClose: toastConfig.autoClose || true,
 			status: 'none',
-			maxToasts: toastConfig.maxToasts
+			maxToasts: toastConfig.maxToasts || 7
 		});
 
 		// Update the toast positions if they were provided in the configuration

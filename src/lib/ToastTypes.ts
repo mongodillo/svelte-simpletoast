@@ -16,3 +16,12 @@ export type ToastConfig = {
 	status: string;
 	maxToasts: number;
 };
+
+export type ToastConfigObj = {
+	duration?: number;
+	autoClose?: boolean;
+	position?: string;
+	smPosition?: string;
+	maxToasts?: number;
+	colorScheme?: { [key: string]: { color: string; bg: string } };
+};
