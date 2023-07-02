@@ -1,22 +1,24 @@
-<script>
+<script lang="ts">
 	/**
 	 * Importing toast store, tweened from Svelte motion and Svelte lifecycle methods
 	 */
 	import { toasts } from './ToastStore.js';
-	import { tweened } from 'svelte/motion';
+	import type { ToastItem } from './ToastTypes.js';
+
+	import { tweened, type Tweened } from 'svelte/motion';
 	import { linear } from 'svelte/easing';
 	import { onDestroy, onMount } from 'svelte';
 
 	/**
 	 * @property {string} position Position of the toast item on the screen.
 	 */
-	export let position;
+	export let position: string;
 
-	export let toast;
+	export let toast: ToastItem;
 
 	const { autoClose, duration, id, status, message, title, toastTime } = toast;
 
-	let progress,
+	let progress: Tweened<number>,
 		unsubscribe = () => {};
 
 	if (autoClose) {
